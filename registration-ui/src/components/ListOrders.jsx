@@ -28,6 +28,7 @@ class ListOrders extends Component {
                             <th> stulpelis2</th>
                             <th> stulpelis3</th>
                             <th> stulpelis4</th>
+                            <th> stulpelis5</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -38,6 +39,7 @@ class ListOrders extends Component {
                                         <td>{order.registrationNr}</td>
                                         <td>{order.registrationDate}</td>
                                         <td>{order.repairDescription}</td>
+                                        <td>{order.customer.firstName}</td>
 
                                     </tr>
                             )
