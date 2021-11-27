@@ -1,10 +1,11 @@
 
 import './App.css';
+import ListOrders from "./components/ListOrders";
 
 function App() {
   return (
-    <div className="App">
-    <h1> hello</h1>
+    <div className="container">
+    <ListOrders/>
     </div>
   );
 }
