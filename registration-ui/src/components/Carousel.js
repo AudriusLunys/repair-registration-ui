@@ -3,6 +3,7 @@ import React, {Component} from "react";
 import { Carousel } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 class CarouselComponent extends Component {
 
     render() {
@@ -10,8 +11,8 @@ class CarouselComponent extends Component {
             <div>
                 <div className='container-fluid' >
                     <div className="row">
-                        <div className="col-sm-12">
-                            <h3>React Bootstrap Carousel</h3>
+                        <div className="col-sm-12 offset-md-5 offset-md-5" >
+                            <h3>About Us</h3>
                         </div>
                     </div>
                     <div className="row">
@@ -21,37 +22,46 @@ class CarouselComponent extends Component {
                                 <Carousel.Item>
                                     <img
                                         className="d-block w-100"
-                                        src="https://picsum.photos/500/300?img=1"
+                                        src="https://wonderfulengineering.com/wp-content/uploads/2014/07/Hi-Tech-Wallpaper-24.jpg"
+                                        width={600} height={600}
                                         alt="First slide"
                                     />
                                     <Carousel.Caption>
-                                        <h3>First slide label</h3>
-                                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                        <h3>Repaired Brands</h3>
+                                        <p>ASUS, LENOVO, DELL, HP, APPLE</p>
+                                        <p>SAMSUNG, XIAOMI, CANON, EPSON</p>
+
                                     </Carousel.Caption>
                                 </Carousel.Item>
 
                                 <Carousel.Item>
                                     <img
                                         className="d-block w-100"
-                                        src="https://picsum.photos/500/300?img=2"
+                                        src="https://wonderfulengineering.com/wp-content/uploads/2014/07/Hi-Tech-Wallpaper-12.jpg"
+                                        width={600} height={600}
                                         alt="Second slide"
                                     />
 
                                     <Carousel.Caption>
-                                        <h3>Second slide label</h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                        <h3>Contact Us</h3>
+                                        <p>Adress: Konstitucijos pr. 55 ,02560, Vilnius</p>
+                                        <p>Tel Number: +3708999999</p>
+                                        <p>Email: info@chopshop.com</p>
                                     </Carousel.Caption>
                                 </Carousel.Item>
 
                                 <Carousel.Item>
                                     <img
                                         className="d-block w-100"
-                                        src="https://picsum.photos/500/300?img=3"
+                                        src="https://wonderfulengineering.com/wp-content/uploads/2014/07/Hi-Tech-Wallpaper-29.jpg"
+                                        width={600} height={600}
                                         alt="Third slide"
                                     />
                                     <Carousel.Caption>
-                                        <h3>Third slide label</h3>
-                                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                                        <h3>Company Info</h3>
+                                        <p>It Chop Shop corp.</p>
+                                        <p>Reg.Nr: 4699522.</p>
+                                        <p>VAT Nr: 4654659999.</p>
                                     </Carousel.Caption>
                                 </Carousel.Item>
 
