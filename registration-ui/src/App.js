@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CreateOrder from "./components/CreateOrder";
 import Home from "./components/Home";
+import Kazkas from "./components/Kazkas";
 
 function App() {
     return (
