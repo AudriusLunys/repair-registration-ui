@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Navbaras from "./Navbar";
 
 class Header extends Component {
     constructor(props) {
@@ -13,9 +14,7 @@ class Header extends Component {
         return (
             <div>
                 <header>
-                    <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-                     <div><a className="navbar-brand">IT Repair Chop Shop</a></div>
-                    </nav>
+                  <Navbaras/>
                 </header>
             </div>
         );

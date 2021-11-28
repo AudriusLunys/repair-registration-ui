@@ -40,8 +40,6 @@ class CreateOrder extends Component {
                     [event.target.name]: event.target.value
             }
         };
-
-
         OrderService.createOrder(order).then(res => {
             console.log(order);
         });
