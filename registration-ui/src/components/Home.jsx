@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import { useNavigate } from 'react-router-dom';
+import Navbaras from "./Navbar";
+import Carousel from "./Carousel";
 
 class Home extends Component {
 
@@ -14,7 +16,7 @@ class Home extends Component {
     render() {
         return (
             <div>
-              <h1> home </h1>
+                <Carousel/>
             </div>
         );
     }
