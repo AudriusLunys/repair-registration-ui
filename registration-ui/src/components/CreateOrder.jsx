@@ -3,6 +3,7 @@ import OrderService from "../services/OrderService";
 
 
 class CreateOrder extends Component {
+
     constructor(props) {
         super(props);
 
@@ -27,6 +28,7 @@ class CreateOrder extends Component {
         this.handleInputChangeDevice = this.handleInputChangeDevice.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
+
     }
 
     handleSubmit = (event) => {
@@ -42,8 +44,9 @@ class CreateOrder extends Component {
                 [event.target.name]: event.target.value
             }
         };
+
         OrderService.createOrder(order).then(res => {
-            console.log(order);
+
         });
     };
 
@@ -73,9 +76,11 @@ class CreateOrder extends Component {
             }
         });
     };
+
     validate() {
         this.form.current.reportValidity()
     };
+
 
     render() {
         const {firstName, lastName, email, telNumber} = this.state.customer;
@@ -97,7 +102,7 @@ class CreateOrder extends Component {
                                                value={firstName}
                                                name="firstName"
                                                onChange={this.handleInputChangeCustomer}
-                                               required />
+                                               required/>
                                     </div>
 
                                     <div className="form-group">
@@ -113,12 +118,12 @@ class CreateOrder extends Component {
                                     <div className="form-group">
                                         <label>Email</label>
                                         <input
-                                               placeholder="Email"
-                                               className="form-control"
-                                               value={email}
-                                               name="email"
-                                               onChange={this.handleInputChangeCustomer}
-                                               required />
+                                            placeholder="Email"
+                                            className="form-control"
+                                            value={email}
+                                            name="email"
+                                            onChange={this.handleInputChangeCustomer}
+                                            required/>
                                     </div>
                                     <div className="form-group">
                                         <label>Telephone Nr</label>
@@ -127,7 +132,7 @@ class CreateOrder extends Component {
                                                value={telNumber}
                                                name="telNumber"
                                                onChange={this.handleInputChangeCustomer}
-                                               required />
+                                               required/>
                                     </div>
                                     <div><h3> Device Data</h3></div>
 
@@ -138,7 +143,7 @@ class CreateOrder extends Component {
                                                value={manufacturer}
                                                name="manufacturer"
                                                onChange={this.handleInputChangeDevice}
-                                               required />
+                                               required/>
                                     </div>
                                     <div className="form-group">
                                         <label>Device Model</label>
@@ -147,7 +152,7 @@ class CreateOrder extends Component {
                                                value={model}
                                                name="model"
                                                onChange={this.handleInputChangeDevice}
-                                               required />
+                                               required/>
                                     </div>
 
                                     <div className="form-group">
@@ -157,7 +162,7 @@ class CreateOrder extends Component {
                                                value={serialNumber}
                                                name="serialNumber"
                                                onChange={this.handleInputChangeDevice}
-                                               required />
+                                               required/>
                                     </div>
 
                                     <div className="form-group">
@@ -167,7 +172,7 @@ class CreateOrder extends Component {
                                                value={failureDescription}
                                                name="failureDescription"
                                                onChange={this.handleInputChangeDevice}
-                                               required />
+                                               required/>
                                     </div>
 
                                     <button type="button" className="btn btn-success" onClick={this.handleSubmit}>Submit

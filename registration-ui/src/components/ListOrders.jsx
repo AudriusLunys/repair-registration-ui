@@ -21,25 +21,24 @@ class ListOrders extends Component {
             <div>
                 <h2 className="text-center"> Repair Orders</h2>
                 <div className="row">
-                    <table className="table table-striped table-bordered">
-                        <thead>
+                    <table className="table table-bordered table-hover">
+                        <thead className="table-dark">
                         <tr>
-                            <th> stulpelis1</th>
-                            <th> stulpelis2</th>
-                            <th> stulpelis3</th>
-                            <th> stulpelis4</th>
-                            <th> stulpelis5</th>
+                            <th> Registration Order Number</th>
+                            <th> Registration Date</th>
+                            <th> Customer</th>
+                            <th> Device</th>
                         </tr>
                         </thead>
                         <tbody>
                         {
                             this.state.orders.map(
                                 order =>
-                                    <tr key={order.registrationNr}>
+                                    <tr  key={order.registrationNr}>
                                         <td>{order.registrationNr}</td>
                                         <td>{order.registrationDate}</td>
-                                        <td>{order.repairDescription}</td>
-                                        <td>{order.customer.firstName}</td>
+                                        <td>{order.customer.firstName } {order.customer.lastName}</td>
+                                        <td>{order.device.manufacturer} {order.device.model} </td>
 
                                     </tr>
                             )
