@@ -11,6 +11,9 @@ class OrderService {
     createOrder(order){
         return axios.post(ORDER_API_BASE_URL, order);
     }
+    getOrderByRegNr (registrationNr){
+        return axios.get(ORDER_API_BASE_URL + '/' + registrationNr);
+    }
 }
 
 export default new OrderService()
