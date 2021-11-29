@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import OrderService from "../services/OrderService";
 
 
-
 class CreateOrder extends Component {
     constructor(props) {
         super(props);
@@ -21,7 +20,8 @@ class CreateOrder extends Component {
                 failureDescription: ''
             }
         };
-
+        this.form = React.createRef();
+        this.validate = this.validate.bind(this);
         this.handleInputChangeCustomer = this.handleInputChangeCustomer.bind(this);
         this.handleInputRepairDescription = this.handleInputRepairDescription.bind(this);
         this.handleInputChangeDevice = this.handleInputChangeDevice.bind(this);
@@ -31,13 +31,15 @@ class CreateOrder extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
+        this.validate();
         let order = {
-            customer: {...this.state.customer,
+            customer: {
+                ...this.state.customer,
                 [event.target.name]: event.target.value
             },
             device: {
-                    ...this.state.device,
-                    [event.target.name]: event.target.value
+                ...this.state.device,
+                [event.target.name]: event.target.value
             }
         };
         OrderService.createOrder(order).then(res => {
@@ -71,6 +73,9 @@ class CreateOrder extends Component {
             }
         });
     };
+    validate() {
+        this.form.current.reportValidity()
+    };
 
     render() {
         const {firstName, lastName, email, telNumber} = this.state.customer;
@@ -83,7 +88,7 @@ class CreateOrder extends Component {
                         <div className="card col-md-6 offset-md-3 offset-md-3 ">
                             <h3 className="text-center">Register for repair</h3>
                             <div className="card-body">
-                                <form>
+                                <form ref={this.form}>
                                     <div><h3> Customer Data</h3></div>
                                     <div className="form-group">
                                         <label>First Name</label>
@@ -91,7 +96,8 @@ class CreateOrder extends Component {
                                                className="form-control"
                                                value={firstName}
                                                name="firstName"
-                                               onChange={this.handleInputChangeCustomer}/>
+                                               onChange={this.handleInputChangeCustomer}
+                                               required />
                                     </div>
 
                                     <div className="form-group">
@@ -100,16 +106,19 @@ class CreateOrder extends Component {
                                                className="form-control"
                                                value={lastName}
                                                name="lastName"
-                                               onChange={this.handleInputChangeCustomer}/>
+                                               onChange={this.handleInputChangeCustomer}
+                                               required/>
                                     </div>
 
                                     <div className="form-group">
                                         <label>Email</label>
-                                        <input placeholder="Email"
+                                        <input
+                                               placeholder="Email"
                                                className="form-control"
                                                value={email}
                                                name="email"
-                                               onChange={this.handleInputChangeCustomer}/>
+                                               onChange={this.handleInputChangeCustomer}
+                                               required />
                                     </div>
                                     <div className="form-group">
                                         <label>Telephone Nr</label>
@@ -117,7 +126,8 @@ class CreateOrder extends Component {
                                                className="form-control"
                                                value={telNumber}
                                                name="telNumber"
-                                               onChange={this.handleInputChangeCustomer}/>
+                                               onChange={this.handleInputChangeCustomer}
+                                               required />
                                     </div>
                                     <div><h3> Device Data</h3></div>
 
@@ -127,7 +137,8 @@ class CreateOrder extends Component {
                                                className="form-control"
                                                value={manufacturer}
                                                name="manufacturer"
-                                               onChange={this.handleInputChangeDevice}/>
+                                               onChange={this.handleInputChangeDevice}
+                                               required />
                                     </div>
                                     <div className="form-group">
                                         <label>Device Model</label>
@@ -135,7 +146,8 @@ class CreateOrder extends Component {
                                                className="form-control"
                                                value={model}
                                                name="model"
-                                               onChange={this.handleInputChangeDevice}/>
+                                               onChange={this.handleInputChangeDevice}
+                                               required />
                                     </div>
 
                                     <div className="form-group">
@@ -144,7 +156,8 @@ class CreateOrder extends Component {
                                                className="form-control"
                                                value={serialNumber}
                                                name="serialNumber"
-                                               onChange={this.handleInputChangeDevice}/>
+                                               onChange={this.handleInputChangeDevice}
+                                               required />
                                     </div>
 
                                     <div className="form-group">
@@ -153,7 +166,8 @@ class CreateOrder extends Component {
                                                className="form-control"
                                                value={failureDescription}
                                                name="failureDescription"
-                                               onChange={this.handleInputChangeDevice}/>
+                                               onChange={this.handleInputChangeDevice}
+                                               required />
                                     </div>
 
                                     <button type="button" className="btn btn-success" onClick={this.handleSubmit}>Submit
