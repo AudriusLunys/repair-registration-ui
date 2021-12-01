@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
 import OrderService from "../services/OrderService";
-import {useNavigate} from "react-router-dom";
 
 
 class CreateOrder extends Component {
 
     constructor(props) {
         super(props);
-
 
         this.state = {
             customer: {
@@ -30,26 +28,26 @@ class CreateOrder extends Component {
         this.handleInputChangeDevice = this.handleInputChangeDevice.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
-
     }
 
     handleSubmit = (event) => {
-        event.preventDefault();
-        this.validate();
-        let order = {
-            customer: {
-                ...this.state.customer,
-                [event.target.name]: event.target.value
-            },
-            device: {
-                ...this.state.device,
-                [event.target.name]: event.target.value
-            }
-        };
+       event.preventDefault();
+       this.validate();
+            let order = {
+                customer: {
+                    ...this.state.customer,
+                    [event.target.name]: event.target.value
+                },
+                device: {
+                    ...this.state.device,
+                    [event.target.name]: event.target.value
+                }
+            };
 
-        OrderService.createOrder(order).then(res => {
+            OrderService.createOrder(order).then(res => {
+                this.props.history.push('/orders');
+            });
 
-        });
     };
 
     handleInputChangeCustomer = e => {
@@ -79,8 +77,8 @@ class CreateOrder extends Component {
         });
     };
 
-    validate() {
-        this.form.current.reportValidity()
+    validate = () => {
+        this.form.current.reportValidity();
     };
 
 
