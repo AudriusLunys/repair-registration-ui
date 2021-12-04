@@ -4,8 +4,8 @@ const ORDER_API_BASE_URL ="/api/v1/order";
 
 class OrderService {
 
-    getOrders(){
-        return axios.get(ORDER_API_BASE_URL);
+    getOrders(params){
+        return axios.get(ORDER_API_BASE_URL, { params });
     }
 
     createOrder(order){

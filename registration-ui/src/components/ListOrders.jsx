@@ -1,14 +1,23 @@
 import React, {Component} from 'react';
 import OrderService from "../services/OrderService";
+import Pagination from "./Pagination";
+import {paginate} from "../services/paginate";
 
 class ListOrders extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            orders: []
+            orders: [],
+            currentPage:1,
+            pageSize: 4
         }
     }
+
+    handlePageChange = page => {
+        this.setState({currentPage : page});
+    };
+
 
     componentDidMount() {
         OrderService.getOrders().then((response) =>{
@@ -17,6 +26,10 @@ class ListOrders extends Component {
     }
 
     render() {
+        const {pageSize , currentPage } = this.state;
+
+        const orders = paginate(this.state.orders , currentPage , pageSize);
+
         return (
             <div>
                 <h2 className="text-center"> Repair Orders</h2>
@@ -32,19 +45,23 @@ class ListOrders extends Component {
                         </thead>
                         <tbody>
                         {
-                            this.state.orders.map(
+                            orders.map(
                                 order =>
                                     <tr  key={order.registrationNr}>
                                         <td>{order.registrationNr}</td>
                                         <td>{order.registrationDate}</td>
                                         <td>{order.customer.firstName } {order.customer.lastName}</td>
                                         <td>{order.device.manufacturer} {order.device.model} </td>
-
                                     </tr>
                             )
                         }
                         </tbody>
                     </table>
+                    <Pagination
+                        itemsCount = {this.state.orders.length}
+                         pageSize ={pageSize}
+                        currentPage={currentPage}
+                         onPageChange ={this.handlePageChange}/>
                 </div>
             </div>
         );
