@@ -175,7 +175,7 @@ class CreateOrder extends Component {
                                                required/>
                                     </div>
 
-                                    <button type="button" className="btn btn-success" onClick={this.handleSubmit}>Submit
+                                    <button type="button" className="btn btn-info" onClick={this.handleSubmit}>Submit
                                         Order
                                     </button>
 

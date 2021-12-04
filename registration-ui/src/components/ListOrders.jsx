@@ -9,26 +9,29 @@ class ListOrders extends Component {
 
         this.state = {
             orders: [],
-            currentPage:1,
-            pageSize: 4
+            currentPage: 1,
+            pageSize: 5
         }
+    }
+    orderInfo(registrationNr){
+        this.props.history.push(`/order/${registrationNr}`);
     }
 
     handlePageChange = page => {
-        this.setState({currentPage : page});
+        this.setState({currentPage: page});
     };
 
 
     componentDidMount() {
-        OrderService.getOrders().then((response) =>{
-            this.setState({orders : response.data});
+        OrderService.getOrders().then((response) => {
+            this.setState({orders: response.data});
         });
     }
 
     render() {
-        const {pageSize , currentPage } = this.state;
+        const {pageSize, currentPage} = this.state;
 
-        const orders = paginate(this.state.orders , currentPage , pageSize);
+        const orders = paginate(this.state.orders, currentPage, pageSize);
 
         return (
             <div>
@@ -40,28 +43,29 @@ class ListOrders extends Component {
                             <th> Registration Order Number</th>
                             <th> Registration Date</th>
                             <th> Customer</th>
-                            <th> Device</th>
+                            <th> Order Info</th>
                         </tr>
                         </thead>
                         <tbody>
                         {
                             orders.map(
                                 order =>
-                                    <tr  key={order.registrationNr}>
+                                    <tr key={order.registrationNr}>
                                         <td>{order.registrationNr}</td>
                                         <td>{order.registrationDate}</td>
-                                        <td>{order.customer.firstName } {order.customer.lastName}</td>
-                                        <td>{order.device.manufacturer} {order.device.model} </td>
+                                        <td>{order.customer.firstName} {order.customer.lastName}</td>
+                                        <td> <button style={{marginLeft: "10px"}} onClick={ () => this.orderInfo(order.registrationNr)} className="btn btn-info">Review Order </button>
+                                        </td>
                                     </tr>
                             )
                         }
                         </tbody>
                     </table>
                     <Pagination
-                        itemsCount = {this.state.orders.length}
-                         pageSize ={pageSize}
+                        itemsCount={this.state.orders.length}
+                        pageSize={pageSize}
                         currentPage={currentPage}
-                         onPageChange ={this.handlePageChange}/>
+                        onPageChange={this.handlePageChange}/>
                 </div>
             </div>
         );
