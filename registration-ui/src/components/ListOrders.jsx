@@ -10,7 +10,7 @@ class ListOrders extends Component {
         this.state = {
             orders: [],
             currentPage: 1,
-            pageSize: 5
+            pageSize: 10
         }
     }
     orderInfo(registrationNr){
