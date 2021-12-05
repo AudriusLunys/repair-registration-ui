@@ -1,7 +1,5 @@
 import React, {Component} from "react";
 import OrderService from "../services/OrderService";
-import QrCode from "react.qrcode.generator";
-
 class DisplayOrder extends Component {
 
     constructor(props) {
@@ -62,7 +60,7 @@ class DisplayOrder extends Component {
                         <button style={{marginLeft: "10px"}} onClick={ () => this.backToOrders()} className="btn btn-info">Back to Orders </button>
                     </div>
                     <div className="card-footer text-muted">
-                        <QrCode value={'Registration Nr :' + this.state.registrationNr }  />
+
                     </div>
                 </div>
 
