@@ -6,6 +6,8 @@ import Footer from "./components/Footer";
 import CreateOrder from "./components/CreateOrder";
 import Home from "./components/Home";
 import DisplayOrder from "./components/DisplayOrder";
+import EditCustomer from "./components/EditCustomer";
+import EditDevice from "./components/EditDevice";
 
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
                         <Route path='/orders' exact={true} component={ListOrders}></Route>
                         <Route path='/register-device' exact={true} component={CreateOrder}></Route>
                         <Route path='/order/:registrationNr' exact={true} component={DisplayOrder}></Route>
+                        <Route path='/customer-edit/:uuid' exact={true} component={EditCustomer}></Route>
+                        <Route path='/device-edit/:uuid' exact={true} component={EditDevice}></Route>
                     </Switch>
                 </div>
                 <Footer/>
