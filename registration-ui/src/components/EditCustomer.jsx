@@ -52,7 +52,8 @@ class EditCustomer extends Component {
         };
         console.log(customer)
         CustomerService.updateCustomer(customer ,this.state.uuid).then(res => {
-            this.props.history.push('/orders');
+            console.log(this.props)
+            this.props.history.goBack('/orders');
         })
     }
 

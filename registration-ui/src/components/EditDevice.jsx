@@ -52,7 +52,7 @@ class EditDevice extends Component {
         };
         console.log(device)
         DeviceService.updateDevice(device ,this.state.uuid).then(res => {
-            this.props.history.push('/orders');
+            this.props.history.goBack('/orders');
         })
     }
 
